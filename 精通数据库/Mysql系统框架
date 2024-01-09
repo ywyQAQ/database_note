@@ -1,0 +1,29 @@
+## interface|interpreter|optimizer
+
+Application use JDBC,ODBC to connect to MYSQL'S connection pool.
+
+Connection pool has many protection parameters;
+
+```sql
+-- 1.max_connections
+SHOW VARIABLES LIKE 'max_connections';
+-- set max_connections
+SET GLOBAL max_connections = 1000;
+
+-- 2.max_allowed_packet 单次最大数据报文
+SHOW VARIABLES LIKE 'max_allowed_packet'
+-- set max_allowed_packet
+SET GLOBAL max_allowed_packet = 8388608;
+```
+
+Mysql use SQL interpreter and SQL interface to translate and vertify SQL words
+
+Application send SQL words to SQL interface,and which sends it to SQL interpreter.
+
+If Mysql can't translate the SQL words or execute them normally,It will send false information to the Application due to SQL interface.
+
+If the SQL words are good,which are supposed to send to SQL optimizer for optimization.
+
+## storage_engine
+
+storage_engine is responsible to deal with the SQL execute plan optimizered by SQL interpreter.
